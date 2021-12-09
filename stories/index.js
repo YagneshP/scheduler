@@ -16,6 +16,8 @@ import Empty from "components/Appointment/Empty";
 import Show from "components/Appointment/Show";
 import Confirm from "components/Appointment/Confirm";
 import Status from "components/Appointment/Status";
+import Error from "components/Appointment/Error";
+
 
 /**
  *  Button
@@ -173,3 +175,4 @@ storiesOf("Appoinment", module)
     .add("Show", () => <Show student="Lydia Miller-Jones" interviewer = {interviewer} onEdit = {action("onEdit")} onDelete = {action("onDelete")} />)
     .add("Confirm", () => <Confirm message = "Delete the appoinment?" onConfirm = {action("onCpnfirm")} onCancel = {action("onCancel")} />)
     .add("Status", () => <Status message="Deleting"/>)
+    .add("Error", () => <Error message="Could not delete appointment" onClose = {action("onClose")} />)
