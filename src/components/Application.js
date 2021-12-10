@@ -14,10 +14,13 @@ export default function Application(props) {
   useEffect(() => {
     const daysPromise = axios.get("/api/days");
     const appointmentPromise = axios.get("/api/appointments");
-    Promise.all([daysPromise, appointmentPromise])
+    const interviewersPromise = axios.get("/api/interviewers");
+    Promise.all([daysPromise, appointmentPromise, interviewersPromise])
            .then(response => {
               let days = response[0].data;
-              let appointments = response[1].data
+              let appointments = response[1].data;
+              let interviewers = response[2].data;
+              console.log("interviewers", interviewers);
               setState( prev => ({...prev, days, appointments}))
             })
   }, []);
