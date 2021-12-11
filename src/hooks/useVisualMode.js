@@ -3,8 +3,8 @@ import { useState } from "react";
 const useVisualMode = (intial) => {
   const[mode, setMode] = useState(intial);
   const[history, setHistory] = useState([intial]);
-  const transition = (mode, opt) => {
-    if(opt) {
+  const transition = (mode, replace = false) => {
+    if(replace) {
       setHistory([intial]);
     }
     setMode(mode);
