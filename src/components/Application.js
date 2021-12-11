@@ -20,8 +20,7 @@ export default function Application(props) {
               let days = response[0].data;
               let appointments = response[1].data;
               let interviewers = response[2].data;
-              console.log("interviewers", interviewers);
-              setState( prev => ({...prev, days, appointments}))
+              setState( prev => ({...prev, days, appointments, interviewers}))
             })
   }, []);
 
