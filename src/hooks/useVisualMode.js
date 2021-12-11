@@ -3,7 +3,10 @@ import { useState } from "react";
 const useVisualMode = (intial) => {
   const[mode, setMode] = useState(intial);
   const[history, setHistory] = useState([intial]);
-  const transition = (mode) => {
+  const transition = (mode, opt) => {
+    if(opt) {
+      setHistory([intial]);
+    }
     setMode(mode);
     //1.add mode to history array
     setHistory(prev => [...prev, mode]); 
