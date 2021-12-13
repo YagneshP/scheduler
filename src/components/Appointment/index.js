@@ -9,24 +9,26 @@ import Form from './Form';
 const EMPTY = "EMPTY";
 const SHOW = "SHOW";
 const CREATE = "CREATE";
+const SAVING = "SAVING";
 export default function Appointment(props) {
   const {id, time, interview, interviewers, bookInterview} = props;
   const {mode, transition, back} = useVisualMode( interview ?  SHOW:  EMPTY);
- 
  
   const save = (name, interviewer) => {
     const interview = {
       student: name,
       interviewer
     };
+    transition(SAVING);
     bookInterview(id, interview);
+    transition(SHOW);
   }
   return (
     <article className='appointment'>
       <Header time = {time}/>
       {mode === EMPTY && <Empty onAdd={() => transition(CREATE)} />}
       {mode === CREATE && <Form interviewers = {interviewers} onSave = {save} onCancel = {() => back()}/>}
-      {mode === SHOW && (<Show student = {interview.student} interviewer = {interview.interviewer}/>) }
+      {mode === SHOW && interview && (<Show student = {interview.student} interviewer = {interview.interviewer}/>) }
     </article>
   );
 };
