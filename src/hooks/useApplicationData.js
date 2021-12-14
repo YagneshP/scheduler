@@ -1,5 +1,6 @@
 import {useState, useEffect} from 'react';
 import axios from 'axios';
+import { getAppointmentsForDay, getSpotsForDay } from 'helpers/selectors';
 
 const useApplicationData = () => {
   const [state, setState] = useState({day : "Monday", days:[], appointments: {}, interviewers : {} });
@@ -19,8 +20,14 @@ const useApplicationData = () => {
             })
   }, []);
 
+  const updateSpots = (appointments, day) => {
+    const newSpots = getSpotsForDay(appointments,day);
+    day["spots"] = newSpots;
+    return day
+  }
+
   const bookInterview = (id, interview) => {
-    console.log(id, interview);
+
     //PUT request for appointment
     return axios.put(`/api/appointments/${id}`, {interview})
     .then(response => {
@@ -32,13 +39,20 @@ const useApplicationData = () => {
         ...state.appointments,
         [id]: appointment
       };
+     
+      const days = state.days.map( day => {
+        if( day["name"] === state.day ) {
+          return updateSpots(appointments, day)
+        }
+        return day
+      })
+      console.log("days", days);
+      setState(prev => ({...prev, appointments, days}));
+    })
     
-      setState(prev => ({...prev, appointments}))
-    }); 
   };
 
   const cancelInterview = (id) => {
-    console.log(id);
     return axios.delete(`/api/appointments/${id}`)
          .then(response => {
             const appointment = {
@@ -49,7 +63,13 @@ const useApplicationData = () => {
               ...state.appointments,
               [id] : appointment
             };
-            setState(prev => ({...prev, appointments}));
+            const days = state.days.map( day => {
+              if( day["name"] === state.day ) {
+                return updateSpots(appointments, day)
+              }
+              return day
+            })
+            setState(prev => ({...prev, appointments, days}));
          })
 
   };

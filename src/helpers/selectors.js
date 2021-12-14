@@ -30,3 +30,13 @@ export const getInterview = (state, interview) => {
   const interviewersOnDay = interviewerArray.map(person => state.interviewers[person] )
   return interviewersOnDay;
  }
+
+ export const getSpotsForDay = (appointments,day) => {
+  let spots = 0;
+  for(let appointmentId of day["appointments"]) {
+    if(appointments[appointmentId]["interview"] === null ){
+      spots++
+    }
+  }
+   return spots;
+ }
