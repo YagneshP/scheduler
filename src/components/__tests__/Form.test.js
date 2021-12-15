@@ -47,13 +47,13 @@ describe("Form", () => {
     fireEvent.click(getByText("Save"))
     
    
-    /* 3. validation is not shown */
+    /* 4. validation is not shown */
     expect(queryByText(/student name cannot be blank/i)).toBeNull();
   
-    /* 4. onSave is called once*/
+    /* 5. onSave is called once*/
     expect(onSave).toHaveBeenCalledTimes(1);
   
-    /* 5. onSave is called with the correct arguments */
+    /* 6. onSave is called with the correct arguments */
     expect(onSave).toHaveBeenCalledWith("Lydia Miller-Jones", null);
   });
 })
