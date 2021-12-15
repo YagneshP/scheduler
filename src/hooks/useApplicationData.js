@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react';
 import axios from 'axios';
-import { getAppointmentsForDay, getSpotsForDay } from 'helpers/selectors';
+import {  getSpotsForDay } from 'helpers/selectors';
 
 const useApplicationData = () => {
   const [state, setState] = useState({day : "Monday", days:[], appointments: {}, interviewers : {} });
