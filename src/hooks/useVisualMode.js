@@ -7,7 +7,6 @@ const useVisualMode = (intial) => {
     if (replace) {
       setHistory([intial]);
     }
-
     setMode(mode);
     //1.add mode to history array
     setHistory((prev) => [...prev, mode]);

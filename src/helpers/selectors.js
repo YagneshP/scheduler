@@ -30,12 +30,3 @@ export const getInterviewersForDay = (state,day) => {
   return interviewersOnDay;
  }
 
-export const getSpotsForDay = (appointments,day) => {
-  let spots = 0;
-  for(let appointmentId of day["appointments"]) {
-    if(appointments[appointmentId]["interview"] === null ){
-      spots++
-    }
-  }
-   return spots;
-}

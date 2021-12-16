@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { getSpotsForDay } from "helpers/selectors";
+
 
 const useApplicationData = () => {
   const [state, setState] = useState({
@@ -27,8 +27,13 @@ const useApplicationData = () => {
   }, []);
 
   const updateSpots = (appointments, day) => {
-    const newSpots = getSpotsForDay(appointments, day);
-    day["spots"] = newSpots;
+    let spots = 0;
+    for(let appointmentId of day["appointments"]) {
+      if(appointments[appointmentId]["interview"] === null ){
+        spots++
+      }
+    }
+    day["spots"] = spots;
     return day;
   };
 
