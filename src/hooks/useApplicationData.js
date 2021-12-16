@@ -26,15 +26,16 @@ const useApplicationData = () => {
     );
   }, []);
 
-  const updateSpots = (appointments, day) => {
-    let spots = 0;
-    for(let appointmentId of day["appointments"]) {
-      if(appointments[appointmentId]["interview"] === null ){
-        spots++
+  const updateSpots = (state, appointments) => {
+    const days = state.days.map((d) => {
+      if (d["name"] === state.day) {
+        const appointmentsOfTheDay = d["appointments"].map(id => appointments[id]);
+        let updatedSpots = appointmentsOfTheDay.filter((appointment) => appointment["interview"] === null).length;
+        return {...d, spots : updatedSpots}
       }
-    }
-    day["spots"] = spots;
-    return day;
+      return d;
+    })
+    return days;
   };
 
   const bookInterview = (id, interview) => {
@@ -51,12 +52,7 @@ const useApplicationData = () => {
           [id]: appointment,
         };
 
-        const days = state.days.map((day) => {
-          if (day["name"] === state.day) {
-            return updateSpots(appointments, day);
-          }
-          return day;
-        });
+        const days = updateSpots(state, appointments);
         setState((prev) => ({ ...prev, appointments, days }));
       });
   };
@@ -71,12 +67,7 @@ const useApplicationData = () => {
         ...state.appointments,
         [id]: appointment,
       };
-      const days = state.days.map((day) => {
-        if (day["name"] === state.day) {
-          return updateSpots(appointments, day);
-        }
-        return day;
-      });
+      const days = updateSpots(state, appointments);
       setState((prev) => ({ ...prev, appointments, days }));
     });
   };
