@@ -82,6 +82,10 @@ Interview Scheduler is made by using React library. Users can book appointments 
    npm run storybook
    ```
 
+### Server Setup
+
+1. Fork and clone the [scheduler-api] (https://github.com/lighthouse-labs/scheduler-api) into a new directory on your machine ,and follow the README.md instructions to configure and run the API server.
+
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
