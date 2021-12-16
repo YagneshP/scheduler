@@ -52,7 +52,6 @@ const useApplicationData = () => {
           }
           return day;
         });
-        console.log("days", days);
         setState((prev) => ({ ...prev, appointments, days }));
       });
   };
