@@ -5,7 +5,7 @@ module.exports = async ({ config, mode }) => {
     ...config,
     resolve: {
       ...config.resolve,
-      modules: [path.resolve(__dirname, "../src"), ...config.resolve.modules]
-    }
+      modules: [path.resolve(__dirname, "../src"), ...config.resolve.modules],
+    },
   };
 };

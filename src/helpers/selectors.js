@@ -8,7 +8,6 @@ export const getAppointmentsForDay = (state, day) => {
   return appointmentOnDay;
 };
 
-
 export const getInterview = (state, interview) => {
   if(!interview) {
     return null;
@@ -21,7 +20,7 @@ export const getInterview = (state, interview) => {
   return obj;
 }
 
- export const getInterviewersForDay = (state,day) => {
+export const getInterviewersForDay = (state,day) => {
   const filteredDay = state.days.find(d => d["name"] === day);
   if(!filteredDay) {
     return [];
@@ -31,7 +30,7 @@ export const getInterview = (state, interview) => {
   return interviewersOnDay;
  }
 
- export const getSpotsForDay = (appointments,day) => {
+export const getSpotsForDay = (appointments,day) => {
   let spots = 0;
   for(let appointmentId of day["appointments"]) {
     if(appointments[appointmentId]["interview"] === null ){
@@ -39,4 +38,4 @@ export const getInterview = (state, interview) => {
     }
   }
    return spots;
- }
+}
