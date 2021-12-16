@@ -92,22 +92,22 @@ Interview Scheduler is made by using React library. Users can book appointments 
 ### User can add an appointment
 User can select different day , which shows available spots for appointment. User can click add button to create new appointment by providing name and interviewer from interviewers list.By pressing 'Save' it sends request to database and appointment will be saved for that day and update the spots available.
 
-<img src='https://github.com/YagneshP/tweeter/blob/master/docs/tweet_message.gif'>
+<img src='https://github.com/YagneshP/scheduler/blob/master/docs/create_appointment.gif'>
 
 ### User can edit an appointment
 User can edit appointment by pressing 'Edit' icon and save it.
 
-<img src='https://github.com/YagneshP/tweeter/blob/master/docs/responsive.gif'>
+<img src='https://github.com/YagneshP/scheduler/blob/master/docs/edit_appointmment.gif'>
 
 ### User can delete an appointment
 User can delete an appointment by pressing 'Delete' icon. App shows confirmation box to users , if they want to confirmation of deleting appoinment.
 
-<img src='https://github.com/YagneshP/tweeter/blob/master/docs/counter.gif' >
+<img src='https://github.com/YagneshP/scheduler/blob/master/docs/delete_appointment.gif' >
 
 ### User can go back to previouse mode
 While editing and deleting appoinment, User can press cancel and go back to previouse mode
 
-<img src='https://github.com/YagneshP/tweeter/blob/master/docs/counter.gif' >
+<img src='https://github.com/YagneshP/scheduler/blob/master/docs/prev_mode.gif' >
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
